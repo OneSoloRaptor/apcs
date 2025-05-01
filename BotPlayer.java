@@ -8,7 +8,6 @@ public class BotPlayer {
     }
 
     public void takeTurn(Property[] board) {
-        Random random = new Random();
         int roll = (int)(Math.random()*12 + 1);
         System.out.println(piece + " rolls a " + roll);
     }
