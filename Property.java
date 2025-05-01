@@ -1,11 +1,20 @@
 public abstract class Property {
-    private String name;
-    private int price;
-    private Person owner;
+    protected String name;
+    protected int price;
+    protected Person owner;
+    protected boolean buyable;
+    protected int rent;
 
     public Property(String name, int price) {
         this.name = name;
         this.price = price;
+    }
+    
+    public Property(String name, int price, boolean buyable, int rent) {
+        this.name = name;
+        this.price = price;
+        this.buyable = buyable;
+        this.rent = rent;
     }
 
     public String getName() {
@@ -20,9 +29,31 @@ public abstract class Property {
         return owner;
     }
 
+    public boolean isBuyable() {
+        return buyable;
+    }
+
+    public int getRent() {
+        return rent;
+    };
+
     public void setOwner(Person owner) {
         this.owner = owner;
     }
 
-    public abstract int getRent();
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setBuyable(boolean buyable) {
+        this.buyable = buyable;
+    }
+
+    public void setRent(int rent) {
+        this.rent = rent;
+    }
 }
