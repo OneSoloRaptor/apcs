@@ -9,11 +9,10 @@ public abstract class Property {
         this.name = name;
         this.price = price;
     }
-    
-    public Property(String name, int price, boolean buyable, int rent) {
+
+    public Property(String name, int price, int rent) {
         this.name = name;
         this.price = price;
-        this.buyable = buyable;
         this.rent = rent;
     }
 
@@ -33,7 +32,7 @@ public abstract class Property {
         return buyable;
     }
 
-    public int getRent() {
+    public int getRent(int diceRoll) {
         return rent;
     };
 

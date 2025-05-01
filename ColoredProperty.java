@@ -9,7 +9,7 @@ public class ColoredProperty extends Property {
     }
 
     @Override
-    public int getRent() {
+    public int getRent(int diceRoll) {
         return rent;
     }
 

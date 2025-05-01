@@ -4,7 +4,18 @@ public class Utility extends Property {
     }
 
     @Override
-    public int getRent() {
-        return 30; // Rent can be adjusted based on dice roll
+    public int getRent(int diceRoll) {
+        int amountOwned = 0;
+        for (Property property : owner.getProperties()) {
+            if (property instanceof Utility) {
+                amountOwned++;
+            }
+        }
+        if (amountOwned == 1) {
+            return 4 * diceRoll; 
+        } else if (amountOwned == 2) {
+            return 10 * diceRoll; 
+        }
+        return 0; 
     }
 }

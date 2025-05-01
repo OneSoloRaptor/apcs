@@ -70,7 +70,7 @@ public class Game {
                     } else printRandomExcuse();
                 }
             } else if (!landed.getOwner().equals(user)) {
-                int rent = landed.getRent();
+                int rent = landed.getRent(roll);
                 user.payRent(landed.getOwner(), rent);
                 System.out.println("You paid $" + rent + " to " + landed.getOwner().getPiece());
             } else {
