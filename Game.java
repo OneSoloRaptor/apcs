@@ -19,13 +19,11 @@ public class Game {
         System.out.println("Welcome to MONOPOLY!");
         System.out.println("Type 1 to start a game.");
         System.out.println("Type 2 to exit.");
-        System.out.println("At any time, type 3 to view your properties and balance.");
 
         while (true) {
             String input = scanner.nextLine();
             if (input.equals("1")) break;
             else if (input.equals("2")) exitGame();
-            else if (input.equals("3")) printStatus();
             else printRandomExcuse();
         }
 
@@ -40,7 +38,7 @@ public class Game {
     private void gameLoop() {
         while (true) {
             System.out.println("\n--- Your Turn ---");
-            System.out.println("Press ENTER to roll, 3 to view properties, or q to quit:");
+            System.out.println("Press ENTER to roll, 3 to view balance and properties, or q to quit:");
             String input = scanner.nextLine();
             if (input.equalsIgnoreCase("q")) exitGame();
             if (input.equals("3")) {
