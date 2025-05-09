@@ -53,9 +53,17 @@ public class Game {
             Property landed = board[user.getPositionIndex()];
             System.out.println("You landed on: " + landed.getName());
 
-            if (landed instanceof Chance || landed instanceof CommunityChest) {
-                System.out.println("You drew a card. Nothing happened.");
+            if (landed instanceof Chance) {
+                Chance chance = (Chance) landed;
+                System.out.println("You drew a card. " + (Chance.chanceOptions));
+                user.setMoney(user.getMoney() + 100);
             } 
+            else if (landed instanceof CommunityChest) {
+                CommunityChest communityChest = (CommunityChest) landed;
+                System.out.println("You drew a card. " + (CommunityChest.communityChestOptions));
+                user.setMoney(user.getMoney() - 100);
+            } 
+         
             else if (landed instanceof GoToJail) {
                 user.setPosition(10); // Move to Jail position
                 user.setMoney(user.getMoney() - 100); // Pay $100
@@ -183,7 +191,7 @@ public class Game {
         board[35] = new Railroad("Short Line", 200);
         board[36] = new Chance();
         board[37] = new ColoredProperty("Park Place", 350, "Dark Blue", 35);
-        board[38] = new IncomeTax("Income Tax", 0, "None", 0);
+        board[38] = new IncomeTax("Income Tax", 0, 0, false);
         board[39] = new ColoredProperty("Boardwalk", 400, "Dark Blue", 50);
     }
 }
