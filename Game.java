@@ -54,6 +54,7 @@ public class Game {
             if (landed instanceof Chance || landed instanceof CommunityChest) {
                 user.setMoney(user.getMoney() + landed.getRent(roll, user));
             } 
+         
             else if (landed instanceof GoToJail) {
                 user.setPosition(10); // Move to Jail position
                 user.setMoney(user.getMoney() - 100); // Pay $100
@@ -221,6 +222,7 @@ public class Game {
         board[35] = new Railroad("Short Line", 200);
         board[36] = new Chance();
         board[37] = new ColoredProperty("Park Place", 350, "Dark Blue", 35);
+        board[38] = new IncomeTax("Income Tax", 0, 0, false);
         board[38] = new IncomeTax("Income Tax", 0, 0, false);
         board[39] = new ColoredProperty("Boardwalk", 400, "Dark Blue", 50);
     }
