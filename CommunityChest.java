@@ -25,9 +25,10 @@ public class CommunityChest extends Property {
     }
 
     @Override
-    public int getRent(int diceRoll) {
+    public int getRent(int diceRoll, Person player) {
         int index = random.nextInt(communityChestOptions.length);
         System.out.println(communityChestOptions[index]);
         return communityChestEffects[index];
     }
+    
 }

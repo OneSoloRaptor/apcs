@@ -36,6 +36,10 @@ public abstract class Property {
         return rent;
     };
 
+    public int getRent(int diceRoll, Person player) {
+        return rent;
+    };
+
     public void setOwner(Person owner) {
         this.owner = owner;
     }

@@ -24,18 +24,16 @@ public class Chance extends Property {
         buyable = false;
     }
 
-    @Override
-    public int getRent(int diceRoll) {
+    public int getRent(int diceRoll, Person player) {
         int index = random.nextInt(chanceOptions.length);
         System.out.println(chanceOptions[index]);
 
         
         if (index == 0) {
-            owner.setPosition(0); // Move to Go
+            player.setPosition(0);
         }
         else if (index == 3) {
-            System.out.println("Move back 3 spaces!");
-            owner.move(-3, 40);
+            player.move(-3, 40);
             return 0;
         }
 

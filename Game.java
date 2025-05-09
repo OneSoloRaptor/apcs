@@ -17,13 +17,11 @@ public class Game {
 
     public void startGame() {
         System.out.println("Welcome to MONOPOLY!");
-        System.out.println("Type 1 to start a game.");
-        System.out.println("Type 2 to exit.");
+        System.out.println("Press ENTER to start a game.");
 
         while (true) {
             String input = scanner.nextLine();
-            if (input.equals("1")) break;
-            else if (input.equals("2")) exitGame();
+            if (input.isEmpty()) break;
             else printRandomExcuse();
         }
 
@@ -54,7 +52,7 @@ public class Game {
             System.out.println("You landed on: " + landed.getName());
 
             if (landed instanceof Chance || landed instanceof CommunityChest) {
-                System.out.println("You drew a card. Nothing happened.");
+                user.setMoney(user.getMoney() + landed.getRent(roll, user));
             } 
             else if (landed instanceof GoToJail) {
                 user.setPosition(10); // Move to Jail position
@@ -136,6 +134,46 @@ public class Game {
     }
 
     private void exitGame() {
+        System.out.println("Calculating final scores...");
+        //time delay
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        
+
+        int userNetWorth = user.getMoney();
+        for (Property prop : user.getProperties()) {
+            userNetWorth += prop.getPrice();
+        }
+
+        int bot1NetWorth = bot1.getMoney();
+        for (Property prop : bot1.getProperties()) {
+            bot1NetWorth += prop.getPrice();
+        }
+
+        int bot2NetWorth = bot2.getMoney();
+        for (Property prop : bot2.getProperties()) {
+            bot2NetWorth += prop.getPrice();
+        }
+
+        System.out.println("Final Scores:");
+        System.out.println(user.getPiece() + " (You): $" + userNetWorth);
+        System.out.println(bot1.getPiece() + ": $" + bot1NetWorth);
+        System.out.println(bot2.getPiece() + ": $" + bot2NetWorth);
+
+
+        if (userNetWorth > bot1NetWorth && userNetWorth > bot2NetWorth) {
+            System.out.println("Congratulations! You won the game!");
+        } else if (bot1NetWorth > userNetWorth && bot1NetWorth > bot2NetWorth) {
+            System.out.println(bot1.getPiece() + " won the game!");
+        } else if (bot2NetWorth > userNetWorth && bot2NetWorth > bot1NetWorth) {
+            System.out.println(bot2.getPiece() + " won the game!");
+        } else {
+            System.out.println("It's a tie!");
+        }
+
         System.out.println("Thanks for playing! Goodbye.");
         System.exit(0);
     }
@@ -183,7 +221,7 @@ public class Game {
         board[35] = new Railroad("Short Line", 200);
         board[36] = new Chance();
         board[37] = new ColoredProperty("Park Place", 350, "Dark Blue", 35);
-        board[38] = new IncomeTax("Income Tax", 0, "None", 0);
+        board[38] = new IncomeTax("Income Tax", 0, 0, false);
         board[39] = new ColoredProperty("Boardwalk", 400, "Dark Blue", 50);
     }
 }
