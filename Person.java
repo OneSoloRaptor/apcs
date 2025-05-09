@@ -48,6 +48,10 @@ public class Person {
         return money;
     }
 
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
     public List<Property> getProperties() {
         return properties;
     }
@@ -64,3 +68,4 @@ public class Person {
         this.position = position;
     }
 }
+

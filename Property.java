@@ -55,12 +55,11 @@ public abstract class Property {
     public void setRent(int rent) {
         this.rent = rent;
     }
-
     public String toString() {
         return "Property{" +
                 "name='" + name + '\'' +
                 ", price=" + price +
-                ", owner=" + (owner != null ? owner.getPiece() : "None") +
+                ", owner=" + owner +
                 ", buyable=" + buyable +
                 ", rent=" + rent +
                 '}';

@@ -54,8 +54,28 @@ public class Game {
             System.out.println("You landed on: " + landed.getName());
 
             if (landed instanceof Chance || landed instanceof CommunityChest) {
-                landed.getRent(roll);
-            } else if (landed.getOwner() == null) {
+                System.out.println("You drew a card. Nothing happened.");
+            } 
+            else if (landed instanceof GoToJail) {
+                user.setPosition(10); // Move to Jail position
+                user.setMoney(user.getMoney() - 100); // Pay $100
+            System.out.println("You have landed on Go to Jail and are now in jail. You will pay $100 and move back.");
+                    }
+                    else if (landed instanceof Go) {
+                        user.setMoney(user.getMoney() + 200); // Pay $100
+                    System.out.println("You have landed on Go. Good job! You will receive $200.");
+                    }
+
+                    else if (landed instanceof IncomeTax) {
+                        user.setMoney((int)(user.getMoney()*0.85)); 
+                    System.out.println("Unfortunately you have to pay tax (maybe evade it next time), lose 15% of your net worth.");
+                    }
+
+                    else if (landed instanceof FreeParking) {
+                    System.out.println("Kind of boring but just take a break, there's free parking!");
+                    }
+
+            else if (landed.getOwner() == null) {
                 System.out.println("This property is unowned. Would you like to buy it for $" + landed.getPrice() + "? (y/n)");
                 while (true) {
                     String response = scanner.nextLine();
@@ -125,11 +145,11 @@ public class Game {
     }
 
     public void setupBoard() {
-        board[0] = new ColoredProperty("Go", 0, "None", 0);
+        board[0] = new Go("Go", 0, 0, false);
         board[1] = new ColoredProperty("Mediterranean Avenue", 60, "Brown", 2);
         board[2] = new CommunityChest();
         board[3] = new ColoredProperty("Baltic Avenue", 60, "Brown", 4);
-        board[4] = new ColoredProperty("Income Tax", 0, "None", 0);
+        board[4] = new IncomeTax("Income Tax", 0, 0, false);
         board[5] = new Railroad("Reading Railroad", 200);
         board[6] = new ColoredProperty("Oriental Avenue", 100, "Light Blue", 6);
         board[7] = new Chance();
@@ -145,7 +165,7 @@ public class Game {
         board[17] = new CommunityChest();
         board[18] = new ColoredProperty("Tennessee Avenue", 180, "Orange", 14);
         board[19] = new ColoredProperty("New York Avenue", 200, "Orange", 16);
-        board[20] = new ColoredProperty("Free Parking", 0, "None", 0);
+        board[20] = new FreeParking("Free Parking", 0, 0, false);
         board[21] = new ColoredProperty("Kentucky Avenue", 220, "Red", 18);
         board[22] = new Chance();
         board[23] = new ColoredProperty("Indiana Avenue", 220, "Red", 18);
@@ -155,7 +175,7 @@ public class Game {
         board[27] = new ColoredProperty("Ventnor Avenue", 260, "Yellow", 22);
         board[28] = new Utility("Water Works", 150);
         board[29] = new ColoredProperty("Marvin Gardens", 280, "Yellow", 24);
-        board[30] = new ColoredProperty("Go To Jail", 0, "None", 0);
+        board[30] = new GoToJail("Go To Jail", 0, 0, false);
         board[31] = new ColoredProperty("Pacific Avenue", 300, "Green", 26);
         board[32] = new ColoredProperty("North Carolina Avenue", 300, "Green", 26);
         board[33] = new CommunityChest();
@@ -163,7 +183,7 @@ public class Game {
         board[35] = new Railroad("Short Line", 200);
         board[36] = new Chance();
         board[37] = new ColoredProperty("Park Place", 350, "Dark Blue", 35);
-        board[38] = new ColoredProperty("Luxury Tax", 0, "None", 0);
+        board[38] = new IncomeTax("Income Tax", 0, "None", 0);
         board[39] = new ColoredProperty("Boardwalk", 400, "Dark Blue", 50);
     }
 }
