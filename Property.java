@@ -1,4 +1,4 @@
-public abstract class Property {
+public class Property {
     protected String name;
     protected int price;
     protected Person owner;

@@ -50,6 +50,16 @@ public class Person {
 
     public void setMoney(int money) {
         this.money = money;
+        if (money < 0) {
+            money = 0;
+            if (piece == "Hat" || piece == "Thimble" || piece == "Iron" || piece == "Boot") {
+                System.out.println("You are bankrupt!");
+            } else {
+                System.out.println(piece + " is bankrupt!");
+            }
+            System.out.println("Game Over.");
+            System.exit(0);
+        }
     }
 
     public List<Property> getProperties() {

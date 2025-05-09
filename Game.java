@@ -59,20 +59,21 @@ public class Game {
                 user.setPosition(10); // Move to Jail position
                 user.setMoney(user.getMoney() - 100); // Pay $100
             System.out.println("You have landed on Go to Jail and are now in jail. You will pay $100 and move back.");
-                    }
-                    else if (landed instanceof Go) {
-                        user.setMoney(user.getMoney() + 200); // Pay $100
-                    System.out.println("You have landed on Go. Good job! You will receive $200.");
-                    }
-
-                    else if (landed instanceof IncomeTax) {
-                        user.setMoney((int)(user.getMoney()*0.85)); 
-                    System.out.println("Unfortunately you have to pay tax (maybe evade it next time), lose 15% of your net worth.");
-                    }
-
-                    else if (landed instanceof FreeParking) {
-                    System.out.println("Kind of boring but just take a break, there's free parking!");
-                    }
+            }
+            else if (landed instanceof Go) {
+                user.setMoney(user.getMoney() + 200); // Pay $100
+                System.out.println("You have landed on Go. Good job! You will receive $200.");
+            }
+            else if (landed instanceof IncomeTax) {
+                user.setMoney((int)(user.getMoney()*0.85)); 
+                System.out.println("Unfortunately you have to pay tax (maybe evade it next time), lose 15% of your net worth.");
+            }
+            else if (landed instanceof FreeParking) {
+                System.out.println("Kind of boring but just take a break, there's free parking!");
+            }
+            else if (landed instanceof Jail) {
+                System.out.println("You are just visiting jail. Nothing to worry about.");;
+            }
 
             else if (landed.getOwner() == null) {
                 System.out.println("This property is unowned. Would you like to buy it for $" + landed.getPrice() + "? (y/n)");
@@ -194,7 +195,7 @@ public class Game {
         board[7] = new Chance();
         board[8] = new ColoredProperty("Vermont Avenue", 100, "Light Blue", 6);
         board[9] = new ColoredProperty("Connecticut Avenue", 120, "Light Blue", 8);
-        board[10] = new ColoredProperty("Jail / Just Visiting", 0, "None", 0);
+        board[10] = new Jail("Jail / Just Visiting", 0, 0, false);
         board[11] = new ColoredProperty("St. Charles Place", 140, "Pink", 10);
         board[12] = new Utility("Electric Company", 150);
         board[13] = new ColoredProperty("States Avenue", 140, "Pink", 10);
@@ -222,7 +223,6 @@ public class Game {
         board[35] = new Railroad("Short Line", 200);
         board[36] = new Chance();
         board[37] = new ColoredProperty("Park Place", 350, "Dark Blue", 35);
-        board[38] = new IncomeTax("Income Tax", 0, 0, false);
         board[38] = new IncomeTax("Income Tax", 0, 0, false);
         board[39] = new ColoredProperty("Boardwalk", 400, "Dark Blue", 50);
     }

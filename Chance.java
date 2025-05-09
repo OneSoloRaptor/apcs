@@ -1,19 +1,23 @@
 import java.util.Random;
 
 public class Chance extends Property {
-    public static String[] chanceOptions = {
-        "Advance in life. Collect $100.",
-        "You are poor so someone donates $100.",
-        "Your building loan matures. Collect $100.",
-        "Lucky duck. Gain $100"
+    private static final String[] chanceOptions = {
+        "Advance to Go. Collect $200.",
+        "Pay poor tax of $15.",
+        "Your building loan matures. Collect $150.",
+        "Go back 3 spaces.",
+        "Pay speeding fine of $50."
     };
-    public String chanceEffects(String[] chanceOptions) {
-        return chanceOptions[(int) (Math.random() * chanceOptions.length)];
-    }
-    private int chanceEffects = 100;
+
+    private static final int[] chanceEffects = {
+        200,  // Advance to Go
+        -15,  // Pay poor tax
+        150,  // Building loan matures
+        -3,   // Go back 3 spaces (special case, not monetary)
+        -50   // Pay speeding fine
+    };
 
     private Random random = new Random();
-
     public Chance() {
         super("Chance", 0);
         buyable = false;
@@ -32,6 +36,6 @@ public class Chance extends Property {
             return 0;
         }
 
-        return chanceEffects;
+        return chanceEffects[index];
     }
 }
