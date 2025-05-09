@@ -3,7 +3,7 @@ import java.util.*;
 public class Person {
     protected String piece;
     protected int money = 1500;
-    protected List<Property> properties = new ArrayList<>();
+    protected ArrayList<Property> properties = new ArrayList<>();
     protected int position = 0;
 
     public Person(String piece) {

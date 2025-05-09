@@ -28,7 +28,7 @@ public class BotPlayer extends Person {
              38, 39
         };
 
-        List<Integer> validPositions = new ArrayList<>();
+        ArrayList<Integer> validPositions = new ArrayList<>();
         for (int pos : possiblePositions) {
             int distance = (pos - position + boardLength) % boardLength; // Handle wrapping around the board
             if (distance > 0 && distance <= 12) {

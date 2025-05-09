@@ -95,8 +95,28 @@ public class Game {
                 System.out.println("You landed on your own property.");
             }
 
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            System.out.println();
+
             bot1.takeTurn(board);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            System.out.println();
+
             bot2.takeTurn(board);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            System.out.println();
         }
     }
 
@@ -108,24 +128,31 @@ public class Game {
         System.out.println("4. Boot");
         while (true) {
             String choice = scanner.nextLine();
-            switch (choice) {
-                case "1":
+            if (choice != "") {
+                if (choice.equals("1")) {
                     user = new Person("Hat");
+                    System.out.println("You chose " + user.getPiece() + ".");
                     return;
-                case "2":
+                } else if (choice.equals("2")) {
                     user = new Person("Thimble");
+                    System.out.println("You chose " + user.getPiece() + ".");
                     return;
-                case "3":
+                } else if (choice.equals("3")) {
                     user = new Person("Iron");
+                    System.out.println("You chose " + user.getPiece() + ".");
                     return;
-                case "4":
+                } else if (choice.equals("4")) {
                     user = new Person("Boot");
+                    System.out.println("You chose " + user.getPiece() + ".");
                     return;
-                default:
+                } else {
                     printRandomExcuse();
+                }
             }
         }
     }
+        
+    
 
     private void printStatus() {
         System.out.println("Your balance: $" + user.getMoney());
