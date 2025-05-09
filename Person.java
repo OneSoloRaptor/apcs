@@ -1,10 +1,10 @@
 import java.util.*;
 
 public class Person {
-    private String piece;
-    private int money = 1500;
-    private List<Property> properties = new ArrayList<>();
-    private int position = 0;
+    protected String piece;
+    protected int money = 1500;
+    protected List<Property> properties = new ArrayList<>();
+    protected int position = 0;
 
     public Person(String piece) {
         this.piece = piece;

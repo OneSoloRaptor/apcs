@@ -21,6 +21,7 @@ public class CommunityChest extends Property {
 
     public CommunityChest() {
         super("Community Chest", 0);
+        buyable = false;
     }
 
     @Override

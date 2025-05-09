@@ -6,6 +6,7 @@ public class ColoredProperty extends Property {
         super(name, price);
         this.color = color;
         this.rent = rent;
+        buyable = true;
     }
 
     @Override

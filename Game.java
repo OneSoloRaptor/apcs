@@ -54,7 +54,7 @@ public class Game {
             System.out.println("You landed on: " + landed.getName());
 
             if (landed instanceof Chance || landed instanceof CommunityChest) {
-                System.out.println("You drew a card. Nothing happened.");
+                landed.getRent(roll);
             } else if (landed.getOwner() == null) {
                 System.out.println("This property is unowned. Would you like to buy it for $" + landed.getPrice() + "? (y/n)");
                 while (true) {
