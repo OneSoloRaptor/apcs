@@ -139,7 +139,7 @@ public class Game {
         System.out.println("Calculating final scores...");
         //time delay
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
