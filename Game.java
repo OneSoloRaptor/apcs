@@ -16,7 +16,14 @@ public class Game {
     };
 
     public void startGame() {
+        System.out.println();
         System.out.println("Welcome to MONOPOLY!");
+        System.out.println("You start with $1500.");
+        System.out.println("You can roll the dice by pressing ENTER.");
+        System.out.println("You can view your balance and properties by pressing 3.");
+        System.out.println("You can quit the game by pressing q.");
+        System.out.println("You can buy properties by pressing y or n.");
+        System.out.println();
         System.out.println("Press ENTER to start a game.");
 
         while (true) {
@@ -36,11 +43,17 @@ public class Game {
     private void gameLoop() {
         while (true) {
             System.out.println("\n--- Your Turn ---");
-            System.out.println("Press ENTER to roll, 3 to view balance and properties, or q to quit:");
+            System.out.println("Press ENTER to roll, 3 to view balance and properties, 4 to view the CPUs' balance and properties, or q to quit:");
             String input = scanner.nextLine();
             if (input.equalsIgnoreCase("q")) exitGame();
             if (input.equals("3")) {
-                printStatus();
+                printStatus(user);
+                continue;
+            }
+            else if (input.equals("4")){
+                printStatus(bot1);
+                System.out.println();
+                printStatus(bot2);
                 continue;
             }
 
@@ -90,7 +103,6 @@ public class Game {
             } else if (!landed.getOwner().equals(user)) {
                 int rent = landed.getRent(roll);
                 user.payRent(landed.getOwner(), rent);
-                System.out.println("You paid $" + rent + " to " + landed.getOwner().getPiece());
             } else {
                 System.out.println("You landed on your own property.");
             }
@@ -154,10 +166,13 @@ public class Game {
         
     
 
-    private void printStatus() {
-        System.out.println("Your balance: $" + user.getMoney());
-        System.out.println("Your properties:");
-        for (Property prop : user.getProperties()) {
+    private void printStatus(Person player) {
+        String piece = player.getPiece() + "'s";
+        if (player == user) 
+            piece = "Your";
+        System.out.println(piece + " balance: $" + player.getMoney());
+        System.out.println(piece + " properties:");
+        for (Property prop : player.getProperties()) {
             System.out.println("- " + prop.getName());
         }
     }
