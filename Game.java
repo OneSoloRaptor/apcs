@@ -21,6 +21,7 @@ public class Game {
         System.out.println("You start with $1500.");
         System.out.println("You can roll the dice by pressing ENTER.");
         System.out.println("You can view your balance and properties by pressing 3.");
+        System.out.println("You can view the CPUs' balance and properties by pressing 4.");
         System.out.println("You can quit the game by pressing q.");
         System.out.println("You can buy properties by pressing y or n.");
         System.out.println();
