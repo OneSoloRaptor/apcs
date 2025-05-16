@@ -109,7 +109,7 @@ public class Game {
             }
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -117,7 +117,7 @@ public class Game {
 
             bot1.takeTurn(board);
             try {
-                Thread.sleep(2000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -125,7 +125,7 @@ public class Game {
 
             bot2.takeTurn(board);
             try {
-                Thread.sleep(2000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
@@ -182,7 +182,7 @@ public class Game {
         System.out.println("Calculating final scores...");
         //time delay
         try {
-            Thread.sleep(2000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
